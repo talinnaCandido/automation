@@ -1,45 +1,4 @@
-Attribute VB_Name = "Módulo1"
-Sub Macro1()
-'
-' Macro1 Macro
-'
-
-'
-    For Each oShape In ActiveSheet.Shapes
-    strImageName = ActiveSheet.Cells(oShape.TopLeftCell.Row, 1).Value
-    oShape.Select
-    'Picture format initialization
-    Selection.ShapeRange.PictureFormat.Contrast = 0.5:
-    Selection.ShapeRange.PictureFormat.Brightness = 0.5:
-    Selection.ShapeRange.PictureFormat.ColorType = msoPictureAutomatic:
-    Selection.ShapeRange.PictureFormat.TransparentBackground = msoFalse:
-    Selection.ShapeRange.Fill.Visible = msoFalse
-    Selection.ShapeRange.Line.Visible = msoFalse
-    Selection.ShapeRange.Rotation = 0#
-    Selection.ShapeRange.PictureFormat.CropLeft = 0#
-    Selection.ShapeRange.PictureFormat.CropRight = 0#
-    Selection.ShapeRange.PictureFormat.CropTop = 0#
-    Selection.ShapeRange.PictureFormat.CropBottom = 0#
-    Selection.ShapeRange.ScaleHeight 1#, msoTrue, msoScaleFromTopLeft
-    Selection.ShapeRange.ScaleWidth 1#, msoTrue, msoScaleFromTopLeft
-    '/Picture format initialization
-    
-    Application.Selection.CopyPicture
-    Set oDia = ActiveSheet.ChartObjects.Add(0, 0, oShape.Width, oShape.Height)
-    Set oChartArea = oDia.Chart
-    oDia.Activate
-    
-    With oChartArea
-        .ChartArea.Select
-        .Paste
-        .Export ("c:\fotos\" & strImageName & ".jpg")
-    End With
-    
-    oDia.Delete 'oChartArea.Delete
-Next
-End Sub
-
-
+Attribute VB_Name = "SalvaFotos"
 
 Sub SavaFotos()
 Attribute SavaFotos.VB_ProcData.VB_Invoke_Func = "Y\n14"
@@ -70,7 +29,7 @@ If sFolder <> "" Then ' if a file was chosen
         
         For Each shp In ws.Shapes 'Navega entre as shapes da worksheet atual
     
-            If shp.Type = msoPicture Then 'É imagem?
+            If shp.Type = msoPicture Then 'imagem?
                 shp.Select
                 
                 Application.Selection.CopyPicture 'Copia a imagem
