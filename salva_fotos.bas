@@ -1,5 +1,5 @@
 
-Sub SavaFotos()
+Sub SalvaFotos()
 '
 ' SavaFotos Macro
 '
