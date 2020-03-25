@@ -1,7 +1,5 @@
-Attribute VB_Name = "SalvaFotos"
 
 Sub SavaFotos()
-Attribute SavaFotos.VB_ProcData.VB_Invoke_Func = "Y\n14"
 '
 ' SavaFotos Macro
 '
